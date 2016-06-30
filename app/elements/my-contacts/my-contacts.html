@@ -4,6 +4,18 @@
 <dom-module id="my-contacts">
   <template>
     <style>
+      li:first-child {
+        padding-bottom: 10px;
+      }
+
+      li + li {
+        padding: 10px 0px;
+        border-top: 1px solid #000;
+      }
+
+      li > a {
+        text-decoration: none;
+      }
       /*:host {
         display: block;
       }
@@ -15,7 +27,7 @@
 
     <ul>
       <template is="dom-repeat" items="{{items}}">
-        <li><a href$="{{baseUrl}}users/{{item}}">{{item}}</a></li>
+        <li><a href$="{{baseUrl}}users/{{item.firstName}}">{{item.firstName}} {{item.lastName}}</a></li>
         <!-- </a> -->
       </template>
     </ul>
@@ -39,11 +51,8 @@
 
         ready: function() {
           this.items = [
-            'Addy',
-            'Rob',
-            'Chuck',
-            'Sam',
-            'Nick'
+            {firstName : 'Andreas', lastName: 'Henkel'},
+            {firstName : 'Rob', lastName: 'Stark'}
           ];
         }
       });
