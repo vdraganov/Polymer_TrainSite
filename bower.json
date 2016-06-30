@@ -1,5 +1,5 @@
 {
-  "name": "polymer-starter-kit",
+  "name": "PolymerTrain",
   "private": true,
   "dependencies": {
     "iron-elements": "PolymerElements/iron-elements#^1.0.0",
@@ -12,5 +12,19 @@
   "devDependencies": {
     "web-component-tester": "^4.0.0"
   },
-  "ignore": []
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/vdraganov/Polymer_TrainSite",
+  "authors": [
+    "Valentin Draganov <vdraganov@hotmail.co.uk>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "license": "MIT"
 }

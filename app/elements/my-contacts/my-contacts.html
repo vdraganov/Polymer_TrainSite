@@ -1,0 +1,52 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+<dom-module id="my-contacts">
+  <template>
+    <style>
+      /*:host {
+        display: block;
+      }
+
+      span {
+        @apply(--paper-font-body1);
+      }*/
+    </style>
+
+    <ul>
+      <template is="dom-repeat" items="{{items}}">
+        <li><a href$="{{baseUrl}}users/{{item}}">{{item}}</a></li>
+        <!-- </a> -->
+      </template>
+    </ul>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      console.log("Test");
+
+      Polymer({
+        is: 'my-contacts',
+
+        properties: {
+          items: {
+            type: Array,
+            notify: true
+          }
+        },
+
+        ready: function() {
+          this.items = [
+            'Addy',
+            'Rob',
+            'Chuck',
+            'Sam',
+            'Nick'
+          ];
+        }
+      });
+    })();
+  </script>
+</dom-module>
