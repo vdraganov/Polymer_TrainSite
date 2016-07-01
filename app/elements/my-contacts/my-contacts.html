@@ -1,11 +1,41 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../../bower_components/paper-toast/paper-toast.html">
 
 <dom-module id="my-contacts">
   <template>
     <style>
+        ul {
+            list-style-type: none;
+        }
+
+        .card-container {
+            width: 100%;
+            display: -webkit-inline-box;
+        }
+
+        .card-container .left-container {
+            min-height: 30px;
+            margin: auto 10px;
+        }
+
+        .middle-container, .right-container {
+            width: 45%;
+        }
+
       li:first-child {
         padding-bottom: 10px;
+      }
+
+      .card-container > div{
+          @apply(--paper-font-title);
+          color: #858483;
+      }
+
+      .img-beautify {
+          border-radius: 50%;
+          border: 3px solid #858483;
       }
 
       li + li {
@@ -13,7 +43,7 @@
         border-top: 1px solid #000;
       }
 
-      li > a {
+      a, ul {
         text-decoration: none;
       }
       /*:host {
@@ -24,10 +54,28 @@
         @apply(--paper-font-body1);
       }*/
     </style>
+<!--
+    <style is="custom-style">
+      #toast2 {
+        --paper-toast-background-color: red;
+        --paper-toast-color: white;
+      }
+    </style>
+
+    <paper-button raised onclick="toast2.open()">Styled toast</paper-button>
+
+    <paper-toast id="toast2" class="fit-bottom" text="This toast is red and fits bottom!"></paper-toast> -->
 
     <ul>
       <template is="dom-repeat" items="{{items}}">
-        <li><a href$="{{baseUrl}}users/{{item.firstName}}">{{item.firstName}} {{item.lastName}}</a></li>
+        <li>
+            <a class="card-container" href$="{{baseUrl}}users/{{item.lastName}}%20{{item.firstName}}">
+                <iron-image class="left-container img-beautify" placeholder="data:base64" preload src="{{item.contactImage}}"></iron-image>
+                <!-- <img class="left-container img-beautify" src="{{item.contactImage}}" alt="contact-picture" /> -->
+                <div class="middle-container contactPersonalInfo" style="line-height: 58px;">{{item.lastName}}, {{item.firstName}}</div>
+                <div class="right-container contactEmail" style="line-height: 58px;">{{item.email}}</div>
+            </a>
+        </li>
         <!-- </a> -->
       </template>
     </ul>
@@ -36,8 +84,6 @@
   <script>
     (function() {
       'use strict';
-
-      console.log("Test");
 
       Polymer({
         is: 'my-contacts',
@@ -51,9 +97,10 @@
 
         ready: function() {
           this.items = [
-            {firstName : 'Andreas', lastName: 'Henkel'},
-            {firstName : 'Rob', lastName: 'Stark'}
+            {firstName: 'Andreas', lastName: 'Henkel', email: "ah@no-such-mail.com", contactImage: "https://randomuser.me/api/portraits/thumb/men/3.jpg"},
+            {firstName: 'Rob', lastName: 'Stark', email: "rs@no-such-mail.com", contactImage: "https://randomuser.me/api/portraits/thumb/men/7.jpg"}
           ];
+
         }
       });
     })();
