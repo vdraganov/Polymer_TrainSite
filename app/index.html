@@ -103,7 +103,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <span class="space"></span>
 
           <!-- Toolbar icons -->
-          <paper-icon-button icon="refresh"></paper-icon-button>
+          <paper-icon-button icon="refresh" onclick="location.reload()"></paper-icon-button>
+          <!-- TODO: fix the below line -->
+          <paper-icon-button onclick="alert('click!')" class="selectable-content" icon="image:brightness-7"></paper-icon-button>
           <paper-icon-button icon="search"></paper-icon-button>
 
           <!-- Application name -->
@@ -128,7 +130,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <p class="subhead">You now have:</p>
                 <my-list></my-list>
-
+                <paper-fab icon="add"></paper-fab>
                 <p>Looking for more Web App layouts? Check out our <a href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can also <a href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>
               </paper-material>
 
@@ -179,6 +181,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </section>
 
             <section data-route="contact" tabindex="-1">
+              <ui-message header="We're preparing your profile" message="It'll be ready in just a sec."> </ui-message>
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Contact</h1>
                 <p>This is the contact section</p>
@@ -198,6 +201,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- build:js scripts/app.js -->
   <script src="scripts/app.js"></script>
   <!-- endbuild-->
+
 </body>
 
 </html>
