@@ -22,6 +22,7 @@
   <template>
     <div class="container">
       <div class="header" id="special">{{header}}</div>
+      <div>click to dismiss</div>
       <p class="content">{{message}}</p>
     </div>
   </template>
@@ -31,22 +32,31 @@
 
       properties: {
         header: String,
-        message: String
+        message: String,
+        specialTapTriggered: {
+          type:Boolean,
+          value: false
+        }
       }
 // dafaq is going on? ASK!
 
-    //   listeners: {
-    //    'tap': 'regularTap',
-    //    'special.tap': 'specialTap'
-    //  },
-     //
-    //  regularTap: function(e) {
-    //    alert("Thank you for tapping");
-    //  },
-     //
-    //  specialTap: function(e) {
-    //    alert("It was special tapping");
-    //  }
+      ,listeners: {
+       'tap': 'regularTap',
+       'special.tap': 'specialTap'
+     },
+
+     regularTap: function(e) {
+       if (!specialTapTriggered) {
+         alert("Thank you for tapping");
+       } else {
+         specialTapTriggered = false;
+       }
+     },
+
+     specialTap: function(e) {
+       specialTapTriggered = true;
+       alert("It was special tapping");
+     }
 
     });
   </script>
