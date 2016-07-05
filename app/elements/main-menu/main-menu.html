@@ -1,0 +1,82 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../bower_components/paper-menu/paper-menu.html">
+
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../styles/app-theme.html">
+<link rel="import" href="../../styles/app-main-menu-style.html">
+
+<dom-module id="main-menu">
+    <template>
+    <script src="../../scripts/app.js"></script>
+      <style include="app-main-menu-style">
+        :host {
+            display: block;
+        }
+
+          #drawerToolbar {
+            color: var(--secondary-text-color);
+            background-color: var(--drawer-menu-color);
+            border-bottom: var(--drawer-toolbar-border-color);
+          }
+
+          #drawerToolbar .menu-name {
+            @apply(--paper-font-title);
+          }
+      </style>
+        <!-- Drawer Toolbar -->
+        <paper-toolbar id="drawerToolbar">
+          <span class="menu-name">Menu</span>
+        </paper-toolbar>
+
+        <!-- Drawer Content -->
+        <paper-menu class="app-menu" attr-for-selected="data-route" selected="[[route]]" is="dom-repeat" items="{{items}}">
+
+          <a data-route="home" href="{{baseUrl}}">
+            <iron-icon icon="home"></iron-icon>
+            <span>Home</span>
+          </a>
+
+          <template is="dom-repeat" items="{{menuItems}}">
+            <a data-route="{{item.menuItemName}}" href="{{baseUrl}}{{item.menuItemName}}">
+              <iron-icon icon="[[item.menuItemIcon]]"></iron-icon>
+              <span>[[item.menuItemName]]</span>
+            </a>
+          </template>
+        </paper-menu>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'main-menu',
+
+      properties: {
+        baseUrl: {
+            type: String,
+            value: "/"
+        },
+        menuItems: {
+            type: Array,
+            notify: true
+        }
+      },
+
+      ready: function () {
+          console.log("ready Function");
+          this.menuItems = [
+              {menuItemName: "Users", menuItemIcon: "android"},
+              {menuItemName: "Contact", menuItemIcon: "mail"},
+              {menuItemName: "Info", menuItemIcon: "info"}
+          ]
+      },
+
+      attached: function(){
+          console.log("menu is attached");
+      }
+    });
+  })();
+  </script>
+</dom-module>
