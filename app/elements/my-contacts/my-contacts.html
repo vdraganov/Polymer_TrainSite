@@ -68,19 +68,14 @@
 
     <ul>
       <template is="dom-repeat" items="{{items}}">
-<<<<<<< HEAD
         <li>
             <a class="card-container" href$="{{baseUrl}}users/{{item.lastName}}%20{{item.firstName}}">
-                <iron-image class="left-container img-beautify" placeholder="data:base64" preload src="{{item.contactImage}}"></iron-image>
+                <iron-image class="left-container img-beautify" preload src="{{item.contactImage}}"></iron-image>
                 <!-- <img class="left-container img-beautify" src="{{item.contactImage}}" alt="contact-picture" /> -->
                 <div class="middle-container contactPersonalInfo" style="line-height: 58px;">{{item.lastName}}, {{item.firstName}}</div>
                 <div class="right-container contactEmail" style="line-height: 58px;">{{item.email}}</div>
             </a>
         </li>
-=======
-        <li><a href$="{{baseUrl}}users/{{item.firstName}}">{{item.firstName}}{{item.lastName}}</a></li>
->>>>>>> 113cfd1e1f7580ca26c211d7db5c6b65abb61a2a
-        <!-- </a> -->
       </template>
     </ul>
   </template>
