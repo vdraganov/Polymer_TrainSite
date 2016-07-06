@@ -34,10 +34,10 @@
         message: String,
         specialTapTriggered: {
           type:Boolean,
-          value: false
+          value: false,
+          notify: true
         }
       }
-// dafaq is going on? ASK!
 
       ,listeners: {
        'tap': 'regularTap',
@@ -45,15 +45,15 @@
      },
 
      regularTap: function(e) {
-       if (!specialTapTriggered) {
+       if (!this.specialTapTriggered) {
          alert("Thank you for tapping");
        } else {
-         specialTapTriggered = false;
+         this.specialTapTriggered = false;
        }
      },
 
      specialTap: function(e) {
-       specialTapTriggered = true;
+       this.specialTapTriggered = true;
        alert("It was special tapping");
      }
 

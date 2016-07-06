@@ -1,0 +1,50 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../styles/app-theme.html">
+<link rel="import" href="../custom-ui-message/custom-ui-message.html">
+<!-- <link rel="import" href="../custom-ui-message/my-theme.html"> -->
+
+<dom-module id="my-true-contacts">
+  <style media="screen" include="app-main-menu-style">
+    /*ui-message {
+      display: none;
+    }*/
+  </style>
+  <template>
+    <ui-message header="Sorry we couldn't find any contacts." message="To add a contact please click on the plus button on the right." hidden="true"> </ui-message>
+    <paper-material elevation="1" if="">
+      <h1 class="page-title" tabindex="-1">Contact</h1>
+      <p>This is the contact section</p>
+      <p>In the array there are: <strong>{{itemsProp.length}}</strong> elements...</p>
+    </paper-material>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'my-true-contacts',
+
+        properties: {
+          itemsProp: {
+            type: Array,
+            notify: true
+          }
+        },
+
+        ready: function() {
+          this.itemsProp = [
+            "nah", "yeah"
+          ];
+          console.log(this.itemsProp.length);
+//Hiding the content of the page if there are no items to be shown
+          if ((this.itemsProp.length === 0)){
+              Polymer.dom(this.root).querySelector('ui-message').hidden = false;
+              Polymer.dom(this.root).querySelector('paper-material').hidden = true;
+          }
+        }
+      });
+    })();
+  </script>
+</dom-module>

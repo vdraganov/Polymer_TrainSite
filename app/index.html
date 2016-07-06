@@ -83,7 +83,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <!-- Toolbar icons -->
           <paper-icon-button icon="refresh" onclick="location.reload()"></paper-icon-button>
           <!-- TODO: fix the below line -->
-          <paper-icon-button onclick="alert('click!')" class="selectable-content" icon="image:brightness-7"></paper-icon-button>
+          <paper-icon-button onclick="alert('brightness button is clicked.')" class="selectable-content" icon="image:brightness-7"></paper-icon-button>
           <paper-icon-button icon="search"></paper-icon-button>
 
           <!-- Application name -->
@@ -140,11 +140,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </section>
 
             <section data-route="contact" tabindex="-1">
-              <ui-message header="We're preparing your profile" message="It'll be ready in just a sec."> </ui-message>
-              <paper-material elevation="1">
-                <h1 class="page-title" tabindex="-1">Contact</h1>
-                <p>This is the contact section</p>
-              </paper-material>
+              <my-true-contacts></<my-true-contacts>
             </section>
 
             <section data-route="info">
